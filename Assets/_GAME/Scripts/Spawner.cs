@@ -15,13 +15,13 @@ public class Spawner : MonoBehaviour
     [SerializeField] protected List<GameObject> BaloonList;
 
     private bool endGame;
-    //public static Action SpawningSequence;
+
     void Start()
     {
-        //SpawningSequence = StartSpawningSequence;
         GameManager.LevelEnd += LevelEnd;
         StartCoroutine(StartSpawningSequence());
     }
+
     /*
      * Note: Balloons will be spawned randomly, in the area with given formula
      * Spawned X Coordinate "Xs" => minXVal < Xs < maxXVal .

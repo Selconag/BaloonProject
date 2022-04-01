@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class Remover : MonoBehaviour
 {
-	private void OnTriggerEnter(Collider other)
+	private void OnCollisionEnter(Collision collision)
 	{
-		if(other.GetComponent<Baloon>().GetBalloonScore() > 0) 
+		if (collision.gameObject.GetComponent<Baloon>().GetBalloonScore() > 0)
 			Player.Instance.InvokeScoreAndType(-1);
-		Destroy(other.gameObject);
+		Destroy(collision.gameObject);
 	}
 }

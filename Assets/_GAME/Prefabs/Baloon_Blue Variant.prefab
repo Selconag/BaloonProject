@@ -11,6 +11,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Baloon_Blue Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 2957312061979384650, guid: c71409ace257b3c459b36ebab06c4957, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2957312061979384651, guid: c71409ace257b3c459b36ebab06c4957, type: 3}
       propertyPath: properties
       value: 
