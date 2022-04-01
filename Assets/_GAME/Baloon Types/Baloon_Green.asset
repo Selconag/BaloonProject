@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fddd2cd13b0e0d479ed044e1f9f3642, type: 3}
+  m_Name: Baloon_Green
+  m_EditorClassIdentifier: 
+  Score: 5
+  VerticalSpeed: 1
+  Material: {fileID: 2100000, guid: 4552809e4e232db449f1d8e40d5ab77b, type: 2}
+  BaloonType: 2
