@@ -6,15 +6,16 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
 	public static Action LevelEnd;
+	public static Action LevelStart;
 
-	[SerializeField] protected Text endText;
+    [SerializeField] protected Text endText;
 	[SerializeField] protected Text scoreText;
 	[SerializeField] protected Text baloonsText;
 	[SerializeField] protected List<GameObject> levels;
 
 	private int playerScore = 0;
 	private int activeLevelCount = 0;
-	private GameObject activeLevel;
+	public GameObject activeLevel;
 	private Dictionary<BaloonTypes, int> baloonCounts;
 	
 	private static GameManager m_Instance;
@@ -62,7 +63,7 @@ public class GameManager : MonoBehaviour
 
 	private void Update()
 	{
-		scoreText.text = "Skor:" + playerScore.ToString();
+		scoreText.text = "Score:" + playerScore.ToString();
 	}
 
 	//Called whenever game starts.
@@ -73,10 +74,11 @@ public class GameManager : MonoBehaviour
 			activeLevel = Instantiate(levels[0]);
 		else
 			activeLevel = Instantiate(levels[activeLevelCount]);
-	}
+		LevelStart?.Invoke();
+    }
 
-	//Called when player clicked the restart game button.
-	public void RestartLevel()
+    //Called when player clicked the restart game button.
+    public void RestartLevel()
 	{
 		SpawnLevel();
 		MenuManager.Instance.LevelEndPanel(false);
@@ -99,15 +101,16 @@ public class GameManager : MonoBehaviour
 	{
 		if (win)
 		{
-			endText.text = "Tebrikler, Oyunu Kazandýnýz!" +
-				"\nFinal Skorunuz:" + playerScore.ToString();
+			endText.text = "Congraculations,\n" +
+				" You Win!" +
+                "\nYour Final Score:" + playerScore.ToString();
 		}
 		else
 		{
-			endText.text = "Maalesef kaybettiniz." +
-				"\nFinal Skorunuz:" + playerScore.ToString();
+			endText.text = "You lose!" +
+				"\nYour Final Score:" + playerScore.ToString();
 		}
-		baloonsText.text = "Yok Ettiðiniz Balonlar:";
+		baloonsText.text = "Balloons you destroyed:";
 		foreach (KeyValuePair<BaloonTypes, int> kvp in baloonCounts)
 		{
 			baloonsText.text += "\n" + kvp.Key.ToString() + ": " + kvp.Value.ToString();

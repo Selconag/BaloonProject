@@ -13,18 +13,38 @@ public class Player : MonoBehaviour
 	private void Awake() => m_Instance = this;
 	public static Player Instance => m_Instance;
 
-	void Update()
-    {
-        if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
-		{
-            RaycastHit hit;
-            Ray ray = this.gameObject.GetComponent<Camera>().ScreenPointToRay(Input.mousePosition);
+    //void Update()
+    //   {
+    //       if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
+    //	{
+    //           RaycastHit hit;
+    //           Ray ray = this.gameObject.GetComponent<Camera>().ScreenPointToRay(Input.mousePosition);
 
-			if (Physics.Raycast(ray, out hit, Mathf.Infinity))
+    //		if (Physics.Raycast(ray, out hit, Mathf.Infinity))
+    //           {
+    //               Transform objectHit = hit.transform;
+    //               InvokeScoreAndType(objectHit.GetComponent<Baloon>().GetBalloonScore(), objectHit.GetComponent<Baloon>().GetBalloonType());
+    //               Destroy(objectHit.gameObject);
+    //           }
+    //       }
+    //   }
+    void Update()
+    {
+        if (Input.touchCount > 0)
+        {
+            Touch touch = Input.GetTouch(0);
+
+            if (touch.phase == TouchPhase.Began && !EventSystem.current.IsPointerOverGameObject())
             {
-                Transform objectHit = hit.transform;
-                InvokeScoreAndType(objectHit.GetComponent<Baloon>().GetBalloonScore(), objectHit.GetComponent<Baloon>().GetBalloonType());
-                Destroy(objectHit.gameObject);
+                RaycastHit hit;
+                Ray ray = this.gameObject.GetComponent<Camera>().ScreenPointToRay(touch.position);
+
+                if (Physics.Raycast(ray, out hit, Mathf.Infinity))
+                {
+                    Transform objectHit = hit.transform;
+                    InvokeScoreAndType(objectHit.GetComponent<Baloon>().GetBalloonScore(), objectHit.GetComponent<Baloon>().GetBalloonType());
+                    Destroy(objectHit.gameObject);
+                }
             }
         }
     }

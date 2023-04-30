@@ -19,7 +19,8 @@ public class Spawner : MonoBehaviour
     void Start()
     {
         GameManager.LevelEnd += LevelEnd;
-        StartCoroutine(StartSpawningSequence());
+        //GameManager.LevelStart += StartSpawning;
+        StartSpawning();
     }
 
     /*
@@ -34,6 +35,12 @@ public class Spawner : MonoBehaviour
      * * if minZVal = -5 and maxZVal = 5
      * Zs will be chosen between -5 to 5 coordinates randomly.
      */
+
+    private void StartSpawning()
+    {
+        StartCoroutine(StartSpawningSequence());
+    }
+
     private IEnumerator StartSpawningSequence()
 	{
 		while (!endGame)
@@ -41,7 +48,7 @@ public class Spawner : MonoBehaviour
 			if (BaloonList.Count == 0) break;
 			else
 			{
-				Instantiate(BaloonList[Random.Range(0, BaloonList.Count)], new Vector3(Random.Range(minXVal, maxXVal), 0, Random.Range(minZVal, maxZVal)), Quaternion.identity, transform.parent);
+				Instantiate(BaloonList[Random.Range(0, BaloonList.Count)], new Vector3(Random.Range(minXVal, maxXVal), 0, Random.Range(minZVal, maxZVal)), Quaternion.identity, GameManager.Instance.activeLevel.transform);
 			}
 			yield return new WaitForSeconds(spawnWaiter);
 		}
@@ -54,6 +61,7 @@ public class Spawner : MonoBehaviour
 
 	private void OnDestroy()
 	{
-		GameManager.LevelEnd -= OnDestroy;
-	}
+		GameManager.LevelEnd -= LevelEnd;
+        //GameManager.LevelStart -= StartSpawning;
+    }
 }

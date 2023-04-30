@@ -20,7 +20,12 @@ public class MenuManager : MonoBehaviour
 		GameManager.LevelEnd += LevelEndPanel;
 	}
 
-	public void StartTheGame()
+    private void OnDestroy()
+    {
+        GameManager.LevelEnd -= LevelEndPanel;
+    }
+
+    public void StartTheGame()
 	{
 		menuPanel.SetActive(false);
 		gamePanel.SetActive(true);

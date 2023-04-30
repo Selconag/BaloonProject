@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-public enum BaloonTypes { Siyah, Mavi, Yesil }
+public enum BaloonTypes { Colorless, Blue, Green }
 
 [CreateAssetMenu(fileName = "New Baloon", menuName = "Entities/Balloon", order = 1)]
 public class BaloonProperties : ScriptableObject
