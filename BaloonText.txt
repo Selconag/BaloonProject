@@ -1,0 +1,15 @@
+<en-US>
+A balloon popping game. In order to win, you need to reach 50 points. How can you do that? Simple just hit the colored baloons.
+Blue baloons count as 1 point while Green ones counts as 5 points.
+But hitting Colorless balloons deducts 2 points.
+</en-US>
+<en-CA>
+A balloon popping game. In order to win, you need to reach 50 points. How can you do that? Simple just hit the colored baloons.
+Blue baloons count as 1 point while Green ones counts as 5 points.
+But hitting Colorless balloons deducts 2 points.
+</en-CA>
+<tr-TR>
+Bir balon patlatma oyunu. Kazanmak için 50 puana ulaşmanız gerekiyor. Nasıl yaparsın? Basit, sadece renkli balonları vur.
+Mavi balonlar 1 puan, Yeşil olanlar 5 puan olarak hesaplanır.
+Ancak Renksiz balonlara vurmak 2 puan düşürür.
+</tr-TR>
